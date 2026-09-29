@@ -91,4 +91,6 @@ Por seguridad, las credenciales y datos personales fueron eliminados o reemplaza
 
 ## Autor
 
-Proyecto realizado como entrega final de automatización con Inteligencia Artificial.
+Proyecto realizado por Mateo Gosio como entrega final del curso de automatización con Inteligencia Artificial.
+
+El objetivo fue diseñar e implementar un flujo autónomo para la gestión de consultas inmobiliarias utilizando n8n, Airtable, Gmail e IA generativa.
