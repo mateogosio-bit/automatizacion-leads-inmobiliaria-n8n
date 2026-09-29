@@ -79,6 +79,22 @@ Contiene la información utilizada por la IA como fuente de datos:
 - Tipo
 - Disponibilidad
 
+## Dashboard de resultados
+
+El proyecto incluye un dashboard en Airtable para monitorear el funcionamiento de la automatización.
+
+Los principales indicadores son:
+
+- Tasa de error de IA: 15%
+- Cantidad de aprobaciones: 7
+- Volumen procesado: 13 leads
+- Tiempo ahorrado: 1:57:41
+- Ahorro económico estimado: USD 15,69
+
+El ahorro económico se calcula considerando un costo estimado de USD 8 por hora de trabajo manual.
+
+![Dashboard de resultados](03_dashboard_kpis_final.png)
+
 ## Vista pública de resultados
 
 https://airtable.com/appoLo3gLVfHx5iIF/shrwvJbGebLtuwAh3
