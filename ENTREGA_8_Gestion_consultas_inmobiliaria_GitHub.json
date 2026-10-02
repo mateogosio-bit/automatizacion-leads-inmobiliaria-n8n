@@ -27,7 +27,8 @@
         },
         "simple": false,
         "filters": {
-          "q": "in:inbox -from:me"
+          "q": "in:inbox -from:me",
+          "readStatus": "unread"
         },
         "options": {}
       },
@@ -389,8 +390,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        -272,
-        -320
+        -224,
+        -128
       ],
       "id": "70669269-c78e-4ae8-bcba-44752be9cca3",
       "name": "Solicitar Aprobacion Humana",
@@ -430,8 +431,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -128,
-        -288
+        -64,
+        -128
       ],
       "id": "aa7baaad-408e-4aa6-8b33-71a75ffa47f2",
       "name": "¿Aprobada?"
@@ -696,8 +697,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        32,
-        -448
+        160,
+        -240
       ],
       "id": "23cf8467-475c-4b7e-9102-6c9bb445c880",
       "name": "Marcar aprobado",
@@ -719,8 +720,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        288,
-        -288
+        336,
+        -240
       ],
       "id": "7b58b47d-d519-41b0-8caf-6b1d177f77a2",
       "name": "Respuesta a cliente",
@@ -993,8 +994,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        592,
-        -464
+        496,
+        -240
       ],
       "id": "91b3a912-0642-422c-91bb-dcf0333fc8c7",
       "name": "Marcar enviado",
@@ -1258,8 +1259,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        -96,
-        272
+        -544,
+        80
       ],
       "id": "f56ae850-0f14-49b8-af42-9d3f25ceee6b",
       "name": "Marcar error",
@@ -1526,8 +1527,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        32,
-        -256
+        160,
+        -32
       ],
       "id": "c5cd121d-552e-461b-9a3f-594da53d9017",
       "name": "Marcar rechazado",
@@ -1542,7 +1543,7 @@
       "parameters": {
         "model": "openai/gpt-oss-safeguard-20b",
         "options": {
-          "maxTokensToSample": 500
+          "maxTokensToSample": 1000
         }
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
@@ -1586,8 +1587,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        -416,
-        -320
+        -400,
+        -128
       ],
       "id": "93232a66-c269-4a1a-a374-acdc2e2f709c",
       "name": "Buscar email de aprobación",
@@ -1620,12 +1621,12 @@
           "mappingMode": "defineBelow",
           "value": {
             "id": "={{ $('Registro de consulta').item.json.id }}",
-            "Prioridad": "={{ JSON.parse($json.output).prioridad }}",
-            "Resumen IA": "={{ JSON.parse($json.output).resumen }}",
-            "Respuesta IA": "={{ JSON.parse($json.output).respuesta }}",
+            "Prioridad": "={{ $json.output.parseJson().prioridad }}",
+            "Resumen IA": "={{ $json.output.parseJson().resumen }}",
+            "Respuesta IA": "={{ $json.output.parseJson().respuesta }}",
             "Estado": "Pendiente de aprobación",
             "Propiedad": "={{ $('Buscar propiedad en Airtable').first().json.id ? [$('Buscar propiedad en Airtable').first().json.id] : [] }}",
-            "Presupuesto USD": "={{ JSON.parse($json.output).presupuesto_usd ?? null }}"
+            "Presupuesto USD": "={{ $json.output.parseJson().presupuesto_usd ?? null }}"
           },
           "matchingColumns": [
             "id"
@@ -1863,8 +1864,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        -576,
-        -320
+        -544,
+        -128
       ],
       "id": "810fe14a-ccc0-4db4-933c-96ab5d000384",
       "name": "Registrar análisis",
@@ -2026,12 +2027,12 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "fe7c71b3-650b-43c2-b869-a48551724e91",
+  "versionId": "2a641e92-8b3f-40c4-936b-825b38a26914",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "1388daad68ef3ab7d6ad2dc276594a191d65fc193c8451f2ff4155acc546cba9"
