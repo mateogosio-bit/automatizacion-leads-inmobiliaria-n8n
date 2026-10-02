@@ -104,6 +104,7 @@ Resultados de la muestra final:
 
 ## Video demostrativo
 
+El video muestra el funcionamiento completo del workflow en n8n, incluyendo el procesamiento del lead, análisis con IA, aprobación humana y actualización de estados.
 La demostración completa del funcionamiento del workflow se encuentra en:
 
 [Ver video demostrativo](Demo_Automatizacion_Inmobiliaria_n8n.mp4)
