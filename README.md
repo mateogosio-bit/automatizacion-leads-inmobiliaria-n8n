@@ -1,112 +1,123 @@
-# Automatización de Leads Inmobiliarios con n8n
+# Automatización de Leads Inmobiliarios con IA
 
-Proyecto final de automatización para la gestión de consultas de una inmobiliaria.
+Proyecto final de automatización desarrollado en **n8n**, orientado a la gestión automática de consultas inmobiliarias recibidas por Gmail.
 
-El sistema recibe consultas de potenciales clientes por Gmail, registra la información en Airtable, busca la propiedad consultada, analiza el mensaje mediante Inteligencia Artificial y genera una respuesta sugerida.
+El sistema registra cada consulta en Airtable, busca información de la propiedad, analiza el mensaje mediante inteligencia artificial y genera una respuesta propuesta. Antes de contactar al cliente se incorpora una instancia obligatoria de aprobación humana (HITL).
 
-Antes de enviar la respuesta al cliente, se incluye una instancia de aprobación humana (HITL - Human in the Loop).
+## Arquitectura
 
-## Herramientas utilizadas
+El flujo principal es:
 
-- n8n
-- Gmail
-- Airtable
-- Groq
-- IA generativa
-- GitHub
+Gmail  
+→ Registro del Lead en Airtable  
+→ Búsqueda de propiedad  
+→ Análisis con IA  
+→ Registro del análisis  
+→ Aprobación humana  
+→ Respuesta al cliente  
+→ Actualización del estado
 
-## Funcionamiento del flujo
+También existe una ruta alternativa para registrar errores producidos durante el procesamiento con IA.
 
-1. Gmail detecta una nueva consulta.
-2. La consulta se registra en Airtable.
-3. n8n busca la propiedad mencionada en la base de datos.
-4. La IA analiza el mensaje del cliente.
-5. Se determina:
-   - Prioridad del lead
-   - Resumen de la consulta
-   - Respuesta sugerida
-   - Propiedad relacionada
-   - Presupuesto declarado por el cliente
-6. La respuesta queda pendiente de aprobación humana.
-7. Si se aprueba, se responde al cliente por Gmail.
-8. Si se rechaza, el lead queda registrado como "Rechazado por Humano".
-9. Si ocurre un error técnico, se registra el estado "Error" junto con el detalle.
+## Tecnologías utilizadas
 
-## Estados del proceso
-
-- Pendiente
-- Pendiente de aprobación
-- Aprobado por Humano
-- Enviado
-- Rechazado por Humano
-- Error
-
-## Control humano
-
-El sistema utiliza un esquema HITL (Human in the Loop).
-
-La IA genera la respuesta, pero no puede enviarla directamente al cliente.
-
-Un usuario debe aprobar o rechazar la respuesta antes del envío.
-
-## Manejo de errores
-
-El nodo de Inteligencia Artificial cuenta con una salida específica de error.
-
-Cuando ocurre un fallo:
-
-- Se detiene la ruta normal.
-- El lead se actualiza en Airtable.
-- El estado cambia a "Error".
-- Se registra el detalle técnico del error.
+- n8n como orquestador
+- Gmail como canal de entrada y salida
+- Airtable como base de datos
+- Groq como proveedor de inferencia
+- openai/gpt-oss-safeguard-20b como modelo de IA
+- Human-in-the-Loop para aprobación de respuestas
 
 ## Base de datos
 
-La base de Airtable contiene dos tablas principales:
+La base de Airtable está compuesta principalmente por:
+
+- `Leads`
+- `Propiedades`
+- `Configuración`
+
+La tabla Leads registra la consulta y su evolución durante todo el proceso.
+
+La tabla Propiedades contiene la información comercial utilizada como contexto.
+
+La tabla Configuración permite almacenar parámetros operativos, como el correo del responsable de aprobación, sin hardcodearlos dentro del workflow.
+
+## Seguridad y resiliencia
+
+El proyecto incorpora:
+
+- Filtro anti-loop en Gmail: `in:inbox -from:me`
+- Variables dinámicas
+- Thread ID de Gmail
+- Aprobación humana antes del envío
+- Ruta específica de error
+- Registro del detalle técnico del error
+- Reintentos automáticos en el nodo de IA
+- Credenciales administradas mediante n8n
+- Uso de tipos de datos correctos en las condiciones
+
+## Dashboard
+
+El Dashboard de Airtable permite visualizar:
+
+- Tasa de aprobación
+- Tasa de error IA
+- Volumen de salida
+- Tiempo ahorrado
+- Ahorro económico estimado
+- Distribución de Leads por estado
+
+Resultados obtenidos en la muestra final:
+
+- Volumen de salida: 5
+- Tasa de error IA: 14%
+- Tasa de aprobación: 83%
+- Tiempo ahorrado: 1:03:00
+- Ahorro económico estimado: USD 8,40
+
+## Evidencias
+
+### Ejecución aprobada
+
+![Workflow aprobado](01_workflow_aprobado.png)
+
+### Ruta de error
+
+![Ruta de error](02_ruta_error.png)
+
+### Dashboard final
+
+![Dashboard](03_dashboard_kpis_final.png)
+
+## Archivos de la entrega
+
+- `Entrega_Final_Automatizacion_Inmobiliaria_2026.pdf`
+  - Documentación completa del proyecto.
+- `ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json`
+  - Exportación del workflow de n8n.
+- `01_workflow_aprobado.png`
+  - Evidencia de ejecución exitosa.
+- `02_ruta_error.png`
+  - Evidencia de manejo de errores.
+- `03_dashboard_kpis_final.png`
+  - Dashboard final de KPIs.
+
+## Vistas públicas de Airtable
 
 ### Leads
-
-Registra las consultas recibidas, el análisis de IA y el estado del proceso.
-
-### Propiedades
-
-Contiene la información utilizada por la IA como fuente de datos:
-
-- Código
-- Nombre
-- Ubicación
-- Precio
-- Tipo
-- Disponibilidad
-
-## Dashboard de resultados
-
-El proyecto incluye un dashboard en Airtable para monitorear el funcionamiento de la automatización.
-
-Los principales indicadores son:
-
-- Tasa de error de IA: 15%
-- Cantidad de aprobaciones: 7
-- Volumen procesado: 13 leads
-- Tiempo ahorrado: 1:57:41
-- Ahorro económico estimado: USD 15,69
-
-El ahorro económico se calcula considerando un costo estimado de USD 8 por hora de trabajo manual.
-
-![Dashboard de resultados](03_dashboard_kpis_final.png)
-
-## Vista pública de resultados
-
 https://airtable.com/appoLo3gLVfHx5iIF/shrwvJbGebLtuwAh3
 
-## Workflow de n8n
+### Propiedades
+https://airtable.com/appoLo3gLVfHx5iIF/shrpfKFoCHG79JeRQ
 
-El archivo JSON incluido en este repositorio permite importar la automatización en n8n.
+## Documentación completa
 
-Por seguridad, las credenciales y datos personales fueron eliminados o reemplazados antes de publicar el workflow.
+La explicación detallada de la arquitectura, estructura de datos, JSON, seguridad, costos, pruebas y Dashboard se encuentra en:
 
-## Autor
+`Entrega_Final_Automatizacion_Inmobiliaria_2026.pdf`
 
-Mateo Gosio
+## Video demostrativo
 
-Proyecto realizado como entrega final del curso de automatización con Inteligencia Artificial.
+Video de aproximadamente 3 minutos mostrando el funcionamiento completo de la automatización.
+
+`demo_workflow_inmobiliaria.mp4`
