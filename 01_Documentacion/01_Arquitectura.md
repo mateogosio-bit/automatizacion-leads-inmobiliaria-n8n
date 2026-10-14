@@ -118,7 +118,7 @@ La captura muestra la ejecución de la ruta alternativa de error del análisis c
 
 La ejecución muestra que el nodo `¿Aprobada?` deriva el proceso hacia `Marcar rechazado` en Airtable. No se ejecuta el envío al cliente.
 
-![Workflow rechazado](../02_Evidencias/04_workflow_rechazado.png.png)
+![Workflow rechazado](../02_Evidencias/04_workflow_rechazado.png)
 
 ---
 
