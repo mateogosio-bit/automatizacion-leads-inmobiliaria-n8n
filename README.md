@@ -18,17 +18,19 @@ Antes de contactar al cliente, el workflow incorpora una instancia obligatoria d
 
 ---
 
+
 ## Documentación técnica
 
 | Apartado | Documentación |
 |---|---|
-| Arquitectura del sistema | [Arquitectura y diagrama](01_Arquitectura.md) |
-| Estructuras de datos | [Modelo de datos y JSON](02_Modelo_Datos_JSON.md) |
-| Optimización de costos | [Matriz comparativa de costos](03_Matriz_de_Costos.md) |
-| Seguridad y resiliencia | [Seguridad, HITL y rutas de error](04_Seguridad_y_Resiliencia.md) |
-| Dashboard de control | [Dashboard y KPIs](05_Dashboard_KPIs.md) |
+| Arquitectura del sistema | [Arquitectura y diagrama](01_Documentacion/01_Arquitectura.md) |
+| Estructuras de datos | [Modelo de datos y JSON](01_Documentacion/02_Modelo_Datos_JSON.md) |
+| Optimización de costos | [Matriz comparativa de costos](01_Documentacion/03_Matriz_de_Costos.md) |
+| Seguridad y resiliencia | [Seguridad, HITL y rutas de error](01_Documentacion/04_Seguridad_y_Resiliencia.md) |
+| Dashboard de control | [Dashboard y KPIs](01_Documentacion/05_Dashboard_KPIs.md) |
 
 Cada documento contiene las explicaciones técnicas correspondientes y las evidencias del funcionamiento cuando aplica.
+
 
 ---
 
@@ -64,11 +66,11 @@ El video presenta el funcionamiento de la automatización, desde la recepción d
 
 | Evidencia | Archivo |
 |---|---|
-| Ejecución aprobada | [Ver captura](01_workflow_aprobado.png) |
-| Rechazo humano | [Ver captura](04_workflow_rechazado.png) |
-| Ruta de error técnico | [Ver captura](02_ruta_error.png) |
-| Diagrama de arquitectura | [Ver diagrama](Diagrama_Arquitectura_IA.png) |
-| Dashboard de control | [Ver captura](03_dashboard_kpis_final.png) |
+| Ejecución aprobada | [Ver captura](02_Evidencias/01_workflow_aprobado.png.png) |
+| Rechazo humano | [Ver captura](02_Evidencias/04_workflow_rechazado.png.png) |
+| Ruta de error técnico | [Ver captura](02_Evidencias/02_ruta_error.png) |
+| Diagrama de arquitectura | [Ver diagrama](02_Evidencias/Diagrama_Arquitectura_IA.png) |
+| Dashboard de control | [Ver captura](02_Evidencias/03_dashboard_kpis_final.png) |
 
 ---
 
