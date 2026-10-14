@@ -1,26 +1,45 @@
 # 1. Arquitectura del sistema
 
-## Objetivo
+# Arquitectura del sistema
 
-Automatizar la recepción y gestión de consultas inmobiliarias recibidas por Gmail, utilizando n8n como orquestador, Airtable como base de datos y Groq como proveedor del modelo de IA. Antes de responder al cliente, el sistema requiere aprobación humana (HITL).
+El workflow automatiza la recepción y gestión de consultas inmobiliarias recibidas por Gmail.  
+n8n orquesta el proceso, Airtable funciona como base de datos operativa y Groq ejecuta el análisis con IA.  
+Antes de responder al cliente, el flujo incorpora una aprobación humana obligatoria (HITL).
 
 ## Diagrama de arquitectura
 
 ```mermaid
 flowchart TD
-    A[Gmail Trigger] --> B[Registrar lead en Airtable]
-    B --> C[Buscar propiedad en Airtable]
-    C --> D[Analizar consulta con IA - Groq]
-    D -->|Correcto| E[Registrar análisis en Airtable]
-    D -->|Error| F[Marcar error en Airtable]
-    E --> G[Buscar email de aprobación]
-    G --> H[Solicitar aprobación humana - Gmail]
-    H --> I{¿Aprobada?}
-    I -->|Sí| J[Marcar aprobado]
-    J --> K[Responder al cliente]
-    K --> L[Marcar enviado]
-    I -->|No| M[Marcar rechazado]
-```
+    A((Gmail Trigger))
+    B[Registrar lead]
+    C[Buscar propiedad]
+    D[Analizar consulta]
+    E[Registrar análisis]
+    F[Marcar error]
+    G[Buscar aprobador]
+    H[Solicitar aprobación]
+    I{¿Aprobada?}
+    J[Marcar aprobado]
+    K[Responder cliente]
+    L[Marcar enviado]
+    M[Marcar rechazado]
+
+    A --> B
+    B --> C
+    C --> D
+
+    D -->|Correcto| E
+    D -->|Error| F
+
+    E --> G
+    G --> H
+    H --> I
+
+    I -->|Sí| J
+    J --> K
+    K --> L
+
+    I -->|No| M
 
 ## Componentes y responsabilidades
 
