@@ -54,7 +54,7 @@ El workflow contempla tres resultados:
 
 El archivo JSON contiene el workflow exportado y permite revisar su estructura e importarlo en n8n.
 
-[Ver workflow JSON](ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json)
+[Ver workflow JSON](03_Workflow/ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json)
 
 ### Video demostrativo
 
