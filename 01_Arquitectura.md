@@ -1,5 +1,3 @@
-# 1. Arquitectura del sistema
-
 # Arquitectura del sistema
 
 El workflow automatiza la recepción y gestión de consultas inmobiliarias recibidas por Gmail.  
@@ -40,7 +38,6 @@ flowchart TD
     K --> L
 
     I -->|No| M
-
 ## Componentes y responsabilidades
 
 | Componente | Función |
