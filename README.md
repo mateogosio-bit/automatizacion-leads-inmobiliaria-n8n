@@ -66,8 +66,8 @@ El video presenta el funcionamiento de la automatización, desde la recepción d
 
 | Evidencia | Archivo |
 |---|---|
-| Ejecución aprobada | [Ver captura](02_Evidencias/01_workflow_aprobado.png.png) |
-| Rechazo humano | [Ver captura](02_Evidencias/04_workflow_rechazado.png.png) |
+| Ejecución aprobada | [Ver captura](02_Evidencias/01_workflow_aprobado.png) |
+| Rechazo humano | [Ver captura](02_Evidencias/04_workflow_rechazado.png) |
 | Ruta de error técnico | [Ver captura](02_Evidencias/02_ruta_error.png) |
 | Diagrama de arquitectura | [Ver diagrama](02_Evidencias/Diagrama_Arquitectura_IA.png) |
 | Dashboard de control | [Ver captura](02_Evidencias/03_dashboard_kpis_final.png) |
