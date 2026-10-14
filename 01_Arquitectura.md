@@ -113,6 +113,11 @@ La siguiente captura muestra una prueba controlada de error y el recorrido alter
 
 ![Ruta de error](02_ruta_error.png)
 
+### Evidencia del rechazo humano
+
+La ejecución muestra que, al seleccionar la opción de rechazo, el nodo `¿Aprobada?` deriva el proceso hacia `Marcar rechazado` en Airtable. No se ejecutan los nodos de respuesta al cliente ni de confirmación de envío.
+
+![Workflow rechazado](04_workflow_rechazado.png)
 ---
 
 ## Archivos técnicos
