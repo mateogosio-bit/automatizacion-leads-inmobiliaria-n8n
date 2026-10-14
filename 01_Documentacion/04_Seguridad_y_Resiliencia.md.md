@@ -55,8 +55,7 @@ La siguiente ejecución de n8n muestra que el nodo ¿Aprobada? toma la salida Fa
 
 Los nodos encargados de responder al cliente no se ejecutan.
 
-![Ejecución con rechazo humano](04_workflow_rechazado.png)
-
+![Ejecución con rechazo humano](../02_Evidencias/04_workflow_rechazado.png)
 ---
 
 ## 3. Manejo de errores técnicos
@@ -82,7 +81,7 @@ Este mecanismo permite identificar las consultas que necesitan una revisión pos
 
 La siguiente captura corresponde a una prueba controlada en la que se activa la ruta de error del análisis mediante IA.
 
-![Workflow rechazado](../02_Evidencias/04_workflow_rechazado.png)
+![Ruta de error en n8n](../02_Evidencias/02_ruta_error.png)
 
 ---
 
