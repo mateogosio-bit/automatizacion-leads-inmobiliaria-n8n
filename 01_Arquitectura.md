@@ -11,7 +11,7 @@ Antes de enviar una respuesta al cliente, el sistema incorpora una instancia obl
 
 ## Diagrama de arquitectura
 
-![Diagrama de arquitectura](Diagrama_Arquitectura_GitHub.png)
+![Diagrama de arquitectura con IA](Diagrama_Arquitectura_IA.png)
 
 ## Componentes y responsabilidades
 
