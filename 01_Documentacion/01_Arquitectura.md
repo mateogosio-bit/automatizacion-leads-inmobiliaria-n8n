@@ -99,29 +99,31 @@ Esta ruta permite mantener un registro de los errores y evitar respuestas incorr
 
 ---
 
+
 ## Evidencias del funcionamiento
 
 ### Workflow aprobado
 
-La siguiente captura muestra una ejecución exitosa del workflow completo en n8n.
+La captura muestra una ejecución exitosa del workflow completo en n8n.
 
-![Workflow aprobado](01_workflow_aprobado.png)
+![Workflow aprobado](../02_Evidencias/01_workflow_aprobado.png)
 
 ### Ruta de error
 
-La siguiente captura muestra una prueba controlada de error y el recorrido alternativo del workflow.
+La captura muestra la ejecución de la ruta alternativa de error del análisis con IA.
 
-![Ruta de error](02_ruta_error.png)
+![Ruta de error](../02_Evidencias/02_ruta_error.png)
 
-### Evidencia del rechazo humano
+### Rechazo humano
 
-La ejecución muestra que, al seleccionar la opción de rechazo, el nodo `¿Aprobada?` deriva el proceso hacia `Marcar rechazado` en Airtable. No se ejecutan los nodos de respuesta al cliente ni de confirmación de envío.
+La ejecución muestra que el nodo `¿Aprobada?` deriva el proceso hacia `Marcar rechazado` en Airtable. No se ejecuta el envío al cliente.
 
-![Workflow rechazado](04_workflow_rechazado.png)
+![Workflow rechazado](../02_Evidencias/04_workflow_rechazado.png.png)
+
 ---
 
 ## Archivos técnicos
 
 - [Descargar workflow JSON de n8n](ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json)
-- [Consultar documentación técnica completa](Entrega_Final_Automatizacion_Inmobiliaria_2026.pdf)
+
 
