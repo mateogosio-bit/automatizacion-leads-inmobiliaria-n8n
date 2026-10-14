@@ -124,6 +124,6 @@ La ejecución muestra que el nodo `¿Aprobada?` deriva el proceso hacia `Marcar 
 
 ## Archivos técnicos
 
-- [Descargar workflow JSON de n8n](ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json)
+- [Ver workflow JSON](03_Workflow/ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json)
 
 
