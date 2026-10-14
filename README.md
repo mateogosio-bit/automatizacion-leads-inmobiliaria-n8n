@@ -1,152 +1,100 @@
 # Automatización de Leads Inmobiliarios con IA
 
+## Descripción del proyecto
+
 Proyecto final de automatización desarrollado en **n8n** para gestionar consultas inmobiliarias recibidas por Gmail.
 
-El sistema registra automáticamente cada consulta en Airtable, busca información de la propiedad, analiza el mensaje mediante inteligencia artificial y genera una respuesta propuesta.
+El sistema registra cada consulta en Airtable, busca información de la propiedad y utiliza inteligencia artificial para analizar el mensaje, clasificar su prioridad y generar una respuesta propuesta.
 
-Antes de enviar cualquier respuesta al cliente, el workflow incorpora una instancia obligatoria de **aprobación humana (Human-in-the-Loop)**.
-
----
+Antes de contactar al cliente, el workflow incorpora una instancia obligatoria de **aprobación humana (Human-in-the-Loop)**.
 
 ## Tecnologías utilizadas
 
-- n8n
-- Gmail
-- Airtable
-- Groq
-- GPT-OSS Safeguard 20B
-- Human-in-the-Loop (HITL)
+- **n8n:** orquestación del workflow.
+- **Gmail:** recepción de consultas, aprobación humana y envío de respuestas.
+- **Airtable:** almacenamiento de leads, propiedades y configuración.
+- **Groq:** proveedor de inferencia del modelo de IA.
+- **GPT-OSS Safeguard 20B:** análisis de consultas y generación de respuestas estructuradas.
 
 ---
 
-## Funcionamiento del workflow
+## Documentación técnica
 
-El proceso principal es:
+| Apartado | Documentación |
+|---|---|
+| Arquitectura del sistema | [Arquitectura y diagrama](01_Arquitectura.md) |
+| Estructuras de datos | [Modelo de datos y JSON](02_Modelo_Datos_JSON.md) |
+| Optimización de costos | [Matriz comparativa de costos](03_Matriz_de_Costos.md) |
+| Seguridad y resiliencia | [Seguridad, HITL y rutas de error](04_Seguridad_y_Resiliencia.md) |
+| Dashboard de control | [Dashboard y KPIs](05_Dashboard_KPIs.md) |
 
-Gmail  
-→ Registro del Lead en Airtable  
-→ Búsqueda de propiedad  
-→ Análisis mediante IA  
-→ Registro del análisis  
-→ Solicitud de aprobación humana  
-→ Respuesta al cliente  
-→ Actualización del estado
-
-También existe una ruta alternativa para registrar errores producidos durante el procesamiento con IA.
+Cada documento contiene las explicaciones técnicas correspondientes y las evidencias del funcionamiento cuando aplica.
 
 ---
 
-## Base de datos
+## Funcionamiento general
 
-La base de Airtable está compuesta por tres tablas principales:
+El proceso automatizado sigue este recorrido:
 
-### Leads
+**Gmail → Registro del lead → Búsqueda de propiedad → Análisis con IA → Registro del análisis → Aprobación humana → Respuesta al cliente**
 
-Registra cada consulta y su evolución durante el proceso.
+El workflow contempla tres resultados:
 
-### Propiedades
-
-Contiene la información comercial utilizada por la IA como contexto.
-
-### Configuración
-
-Almacena parámetros operativos del workflow, como el correo del responsable de aprobación.
+- **Aprobado:** se envía la respuesta al cliente y se actualiza el estado en Airtable.
+- **Rechazado:** se registra la decisión humana y no se envía la respuesta.
+- **Error técnico:** se registra el incidente en Airtable sin continuar hacia el envío.
 
 ---
 
-## Seguridad y resiliencia
+## Archivos técnicos y evidencias
 
-El sistema incorpora:
+### Workflow de n8n
 
-- Filtro anti-loop en Gmail.
-- Procesamiento exclusivo de correos no leídos.
-- Variables dinámicas.
-- Thread ID de Gmail.
-- Aprobación humana antes del envío.
-- Ruta específica de error.
-- Registro del detalle técnico del error.
-- Reintentos automáticos del nodo de IA.
-- Credenciales gestionadas mediante n8n.
+El archivo JSON contiene el workflow exportado y permite revisar su estructura e importarlo en n8n.
 
----
+[Ver workflow JSON](ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json)
 
-## Dashboard
+### Video demostrativo
 
-El Dashboard de Airtable permite visualizar los principales indicadores del sistema.
-
-Resultados de la muestra final:
-
-| KPI | Resultado |
-|---|---:|
-| Volumen de salida | 5 |
-| Tasa de error IA | 14% |
-| Tasa de aprobación | 83% |
-| Tiempo ahorrado | 1:03:00 |
-| Ahorro económico estimado | USD 8,40 |
-
----
-
-## Evidencias
-
-### Workflow aprobado
-
-![Workflow aprobado](01_workflow_aprobado.png)
-
-### Ruta de error
-
-![Ruta de error](02_ruta_error.png)
-
-### Dashboard final
-
-![Dashboard final](03_dashboard_kpis_final.png)
-
----
-
-## Video demostrativo
-
-El video muestra el funcionamiento completo del workflow en n8n, incluyendo el procesamiento del lead, análisis con IA, aprobación humana y actualización de estados.
-La demostración completa del funcionamiento del workflow se encuentra en:
+El video presenta el funcionamiento de la automatización, desde la recepción de una consulta hasta el procesamiento y actualización de los registros.
 
 [Ver video demostrativo](Demo_Automatizacion_Inmobiliaria_n8n.mp4)
 
----
+### Evidencias de ejecución
 
-## Documentación completa
-
-La documentación del proyecto incluye arquitectura, estructura de datos, JSON, seguridad, resiliencia, costos, pruebas y dashboard.
-
-[Ver documentación final en PDF](Entrega_Final_Automatizacion_Inmobiliaria_2026.pdf)
-
----
-
-## Workflow de n8n
-
-El workflow completo puede descargarse e importarse en n8n desde el archivo JSON incluido en este repositorio.
-
-`ENTREGA_8_Gestion_consultas_inmobiliaria_GitHub.json`
+| Evidencia | Archivo |
+|---|---|
+| Ejecución aprobada | [Ver captura](01_workflow_aprobado.png) |
+| Rechazo humano | [Ver captura](04_workflow_rechazado.png) |
+| Ruta de error técnico | [Ver captura](02_ruta_error.png) |
+| Diagrama de arquitectura | [Ver diagrama](Diagrama_Arquitectura_IA.png) |
+| Dashboard de control | [Ver captura](03_dashboard_kpis_final.png) |
 
 ---
 
-## Vistas públicas de Airtable
+## Base de datos y dashboard de Airtable
 
-### Leads
+La base de datos está organizada en tres tablas: **Leads, Propiedades y Configuración**.
 
-https://airtable.com/appoLo3gLVfHx5iIF/shrwvJbGebLtuwAh3
+Leads registra las consultas y sus resultados, mientras que Propiedades almacena la información comercial utilizada por la IA. Ambas tablas están vinculadas mediante el campo `Propiedad`.
 
-### Propiedades
+### Vistas compartidas
 
-https://airtable.com/appoLo3gLVfHx5iIF/shrpfKFoCHG79JeRQ
+- [Consultar tabla Leads](https://airtable.com/appoLo3gLVfHx5iIF/shrwvJbGebLtuwAh3)
+- [Consultar tabla Propiedades](https://airtable.com/appoLo3gLVfHx5iIF/shrpfKFoCHG79JeRQ)
 
+### Dashboard público de KPIs
 
-## Documentación técnica de la entrega
+[Acceder al Dashboard KPIs - Entrega Final](https://airtable.com/appoLo3gLVfHx5iIF/shrj8zRblXtf9BYEq)
 
-La documentación del proyecto se organiza según los criterios de evaluación:
+| Indicador | Resultado |
+|---|---:|
+| Tasa de aprobación | 83% |
+| Volumen de salida | 5 |
+| Tasa de error IA | 14% |
 
-1. Arquitectura del sistema: diagrama, componentes y funcionamiento del workflow.
-2. Modelo de datos y JSON: tablas de Airtable, relaciones, estados y variables.
-3. Matriz de costos: comparación de modelos, tokens, Batch y costos estimados.
-4. Seguridad y resiliencia: prevención de bucles, aprobación humana y manejo de errores.
-5. Pruebas y validación: cinco escenarios, resultados y evidencias.
-6. Dashboard de KPIs: indicadores de aprobación, errores, volumen y ahorro.
+Los cálculos y los indicadores adicionales de ahorro operativo están documentados en [Dashboard y KPIs](05_Dashboard_KPIs.md).
 
-Los documentos técnicos de cada apartado se incorporarán al repositorio con sus respectivas evidencias.
+---
+
+**Proyecto final — Ecosistema de Automatización IA Autónomo para Negocios.**
