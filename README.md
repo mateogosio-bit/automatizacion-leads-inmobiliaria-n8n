@@ -136,3 +136,17 @@ https://airtable.com/appoLo3gLVfHx5iIF/shrwvJbGebLtuwAh3
 ### Propiedades
 
 https://airtable.com/appoLo3gLVfHx5iIF/shrpfKFoCHG79JeRQ
+
+
+## Documentación técnica de la entrega
+
+La documentación del proyecto se organiza según los criterios de evaluación:
+
+1. Arquitectura del sistema: diagrama, componentes y funcionamiento del workflow.
+2. Modelo de datos y JSON: tablas de Airtable, relaciones, estados y variables.
+3. Matriz de costos: comparación de modelos, tokens, Batch y costos estimados.
+4. Seguridad y resiliencia: prevención de bucles, aprobación humana y manejo de errores.
+5. Pruebas y validación: cinco escenarios, resultados y evidencias.
+6. Dashboard de KPIs: indicadores de aprobación, errores, volumen y ahorro.
+
+Los documentos técnicos de cada apartado se incorporarán al repositorio con sus respectivas evidencias.
