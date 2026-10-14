@@ -82,7 +82,7 @@ Este mecanismo permite identificar las consultas que necesitan una revisión pos
 
 La siguiente captura corresponde a una prueba controlada en la que se activa la ruta de error del análisis mediante IA.
 
-![Ruta de error en n8n](02_ruta_error.png)
+![Workflow rechazado](../02_Evidencias/04_workflow_rechazado.png)
 
 ---
 
