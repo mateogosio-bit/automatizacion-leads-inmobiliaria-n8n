@@ -11,63 +11,7 @@ Antes de enviar una respuesta al cliente, el sistema incorpora una instancia obl
 
 ## Diagrama de arquitectura
 
-```mermaid
-flowchart TD
-    A(("Gmail<br/>Trigger"))
-    B["Registrar lead"]
-    C["Buscar propiedad"]
-    D["Analizar consulta"]
-    E["Registrar análisis"]
-    F["Marcar error"]
-    G["Buscar aprobador"]
-    H["Solicitar aprobación"]
-    I{"¿Aprobada?"}
-    J["Marcar aprobado"]
-    K["Responder al cliente"]
-    L["Marcar enviado"]
-    M["Marcar rechazado"]
-
-    A --> B
-    B --> C
-    C --> D
-
-    D -->|Correcto| E
-    D -->|Error| F
-
-    E --> G
-    G --> H
-    H --> I
-
-    I -->|Sí| J
-    J --> K
-    K --> L
-
-    I -->|No| M
-
-    classDef trigger fill:#E0E7FF,stroke:#6366F1,color:#1E1B4B,stroke-width:2px
-    classDef proceso fill:#E0F2FE,stroke:#0284C7,color:#0C4A6E,stroke-width:1.5px
-    classDef ia fill:#F3E8FF,stroke:#9333EA,color:#581C87,stroke-width:2px
-    classDef humano fill:#FEF3C7,stroke:#D97706,color:#92400E,stroke-width:2px
-    classDef decision fill:#FFEDD5,stroke:#EA580C,color:#9A3412,stroke-width:2px
-    classDef exito fill:#DCFCE7,stroke:#16A34A,color:#166534,stroke-width:2px
-    classDef rechazo fill:#FFE4E6,stroke:#E11D48,color:#9F1239,stroke-width:2px
-    classDef error fill:#FEE2E2,stroke:#DC2626,color:#991B1B,stroke-width:2px
-
-    class A trigger
-    class B,C,E,G proceso
-    class D ia
-    class H humano
-    class I decision
-    class J,K,L exito
-    class M rechazo
-    class F error
-
-    linkStyle 3 stroke:#16A34A,stroke-width:2px
-    linkStyle 4 stroke:#DC2626,stroke-width:2px
-    linkStyle 7 stroke:#D97706,stroke-width:2px
-    linkStyle 9 stroke:#16A34A,stroke-width:2px
-    linkStyle 12 stroke:#E11D48,stroke-width:2px
-```
+![Diagrama de arquitectura](Diagrama_Arquitectura_GitHub.png)
 
 ## Componentes y responsabilidades
 
