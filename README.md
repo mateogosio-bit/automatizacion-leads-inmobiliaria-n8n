@@ -95,7 +95,7 @@ Leads registra las consultas y sus resultados, mientras que Propiedades almacena
 | Volumen de salida | 5 |
 | Tasa de error IA | 14% |
 
-Los cálculos y los indicadores adicionales de ahorro operativo están documentados en [Dashboard y KPIs](05_Dashboard_KPIs.md).
+Los cálculos y los indicadores adicionales de ahorro operativo están documentados en [Dashboard y KPIs](01_Documentacion/05_Dashboard_KPIs.md).
 
 ---
 
