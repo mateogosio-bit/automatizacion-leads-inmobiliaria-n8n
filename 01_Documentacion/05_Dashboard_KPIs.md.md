@@ -168,4 +168,5 @@ Los indicadores se actualizan cuando se modifican los registros utilizados para 
 
 La siguiente captura muestra el dashboard de control desarrollado en Airtable, donde se visualizan los cinco indicadores de rendimiento y la distribución de consultas por estado.
 
-![Dashboard de control de Airtable](03_dashboard_kpis_final.png)
+![Dashboard de control de Airtable](../02_Evidencias/03_dashboard_kpis_final.png)
+
